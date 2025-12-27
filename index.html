@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #1e3a8a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1e3a8a;
+        }
+        textarea {
+            width: 100%;
+            height: 180px;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 16px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #163172;
+        }
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            display: none;
+        }
+        .real {
+            background: #e6fffa;
+            color: #065f46;
+        }
+        .fake {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Fake News Detection System</h1>
+    <p>Mini Project – Machine Learning</p>
+</header>
+
+<div class="container">
+    <h2>Enter News Text</h2>
+    <textarea id="newsText" placeholder="Paste the news article or headline here..."></textarea>
+    <br>
+    <button onclick="checkNews()">Check News</button>
+
+    <div id="result" class="result"></div>
+</div>
+
+<footer>
+    <p>Developed for Academic Mini Project</p>
+</footer>
+
+<script>
+    function checkNews() {
+        const text = document.getElementById("newsText").value.trim();
+        const resultDiv = document.getElementById("result");
+
+        if (text.length === 0) {
+            alert("Please enter some news text");
+            return;
+        }
+
+        /*
+        This is a demo logic.
+        In real projects, this part will connect to a ML model (Python / Flask API)
+        */
+
+        if (text.length % 2 === 0) {
+            resultDiv.innerHTML = "✅ The given news is classified as REAL news.";
+            resultDiv.className = "result real";
+        } else {
+            resultDiv.innerHTML = "❌ The given news is classified as FAKE news.";
+            resultDiv.className = "result fake";
+        }
+
+        resultDiv.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
